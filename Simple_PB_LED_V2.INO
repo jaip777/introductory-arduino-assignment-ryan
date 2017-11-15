@@ -3,6 +3,9 @@
 // Define two constant names
 #define LEDpin 3
 #define SWITCHpin 2
+byte SWITCHstate;
+byte lastSWITCHstate;
+
 
 // Define a variable name and set LOW
 byte LEDstate = LOW;
@@ -15,7 +18,7 @@ pinMode(LEDpin, OUTPUT);
   //Define the pin connected to the switch as an input//
 pinMode(SWITCHpin, INPUT);
   // Connect an internal pullup resistor to the switch pin//
-digitalWrite(SWITCHpin, LOW);
+digitalWrite(SWITCHpin, HIGH);
 }
 
 /* The following function loops continuesly.
@@ -25,4 +28,11 @@ void loop() {
 LEDstate = digitalRead(SWITCHpin);
   // Write the status of the switch to the LED
 digitalWrite(LEDpin, !LEDstate);
+if ((lastSWITCHstate == HIGH) && (SWITCHstate == LOW))
+{
+    LEDstate = !LEDstate;
+    digitalWrite(LEDpin, LEDstate);
+    
+}
+lastSWITCHstate = SWITCHstate;
 }
