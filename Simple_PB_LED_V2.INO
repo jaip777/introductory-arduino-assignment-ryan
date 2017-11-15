@@ -28,6 +28,7 @@ void loop() {
 LEDstate = digitalRead(SWITCHpin);
   // Write the status of the switch to the LED
 digitalWrite(LEDpin, !LEDstate);
+        SWITCHstate = digitalRead(SWITCHpin);
 if ((lastSWITCHstate == HIGH) && (SWITCHstate == LOW))
 {
     LEDstate = !LEDstate;
