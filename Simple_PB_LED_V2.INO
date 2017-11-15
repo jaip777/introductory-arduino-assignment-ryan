@@ -24,5 +24,5 @@ void loop() {
   // Read the status of the switch
 LEDstate = digitalRead(SWITCHpin);
   // Write the status of the switch to the LED
-digitalWrite(LEDpin, LEDstate);
+digitalWrite(LEDpin, !LEDstate);
 }
